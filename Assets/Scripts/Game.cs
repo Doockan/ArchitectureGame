@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public class Game : MonoBehaviour
+public class Game
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+ public static IInputSystem InputSystem;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ public Game()
+ {
+  InputSystem = new InputSystem();
+ }
 }
