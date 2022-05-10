@@ -9,20 +9,27 @@ public class Ship : MonoBehaviour
     [SerializeField] private Transform barrel;
     [SerializeField] private GameObject bullet;
 
-    private IMove _moveTransform;
+    private Camera _camera;
+    
+    private IMove _moveSystem;
     
     private IInputSystem _inputSystem;
-    private IRotation _rotation;
+    private IRotation _rotationSystem;
 
     private void Awake()
     {
+        _camera = Camera.main;
         _inputSystem = Game.InputSystem;
-        _moveTransform = new MoveTransform(transform);
-        //_rotation = new Rotation(transform);
+        _moveSystem = new MoveTransform(transform);
+        _rotationSystem = new RotationTransform(transform);
     }
 
     private void Update()
     {
-        _moveTransform.Move(_inputSystem.Axis, speed, Time.deltaTime);
+        var direction = Input.mousePosition - _camera.WorldToScreenPoint(transform.position);
+        direction.z = 0f;
+        _rotationSystem.Rotation(direction);
+
+        //_moveSystem.Move(_inputSystem.Axis, speed, Time.deltaTime);
     }
 }

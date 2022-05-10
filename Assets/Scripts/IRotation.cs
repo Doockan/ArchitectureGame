@@ -2,5 +2,5 @@
 
 public interface IRotation
 {
-    void Rotation(Vector2 axis);
+    void Rotation(Vector3 direction);
 }
