@@ -2,5 +2,6 @@
 
 public interface IMove
 {
-    void Move(Vector2 axis, float maxSpeed, float deltaTime);
+    float Speed { get; }
+    void Move(float horizontal, float vertical, float deltaTime);
 }

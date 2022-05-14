@@ -11,6 +11,7 @@ public class RotationTransform : IRotation
 
     public void Rotation(Vector3 direction)
     {
-        _transform.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        var angel = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        _transform.rotation = Quaternion.AngleAxis(angel - 90f,Vector3.forward);
     }
 }

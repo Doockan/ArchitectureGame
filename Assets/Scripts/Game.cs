@@ -6,6 +6,5 @@ public class Game
 
  public Game()
  {
-  InputSystem = new InputSystem();
  }
 }
