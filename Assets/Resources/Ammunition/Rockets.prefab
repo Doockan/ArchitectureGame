@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6906558712213677053}
   - component: {fileID: 4007778285712277520}
   m_Layer: 0
-  m_Name: Missile
+  m_Name: Rockets
   m_TagString: PlayerMissile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,6 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee257bbedba45018faec667756bb6e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 10
-  radius: 2
+  lifeTime: 3
+  radius: 1
   force: 1000
