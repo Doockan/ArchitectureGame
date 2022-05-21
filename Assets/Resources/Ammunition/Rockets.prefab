@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee257bbedba45018faec667756bb6e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 3
-  radius: 1
-  force: 1000
+  onCollision:
+    m_PersistentCalls:
+      m_Calls: []
+  _lifeTime: 3

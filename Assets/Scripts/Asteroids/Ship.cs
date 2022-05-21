@@ -1,6 +1,7 @@
 ﻿using System;
 using Asteroids.Interface;
 using Asteroids.Object_Pool;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Asteroids
@@ -8,43 +9,31 @@ namespace Asteroids
     public class Ship : MonoBehaviour
     {
         [SerializeField] private int hp;
-        [SerializeField] private float speed;
-        [SerializeField] private float acceleration;
-        [SerializeField] private float force;
+        [SerializeField] private float accelerationForce;
+        [SerializeField] private float overclockingForce;
         [SerializeField] private Transform barrel;
 
         private Camera _camera;
 
         private AmmunitionPool _ammunitionPool;
 
-        private IInputSystem _inputSystem;
         private IHealth _health;
 
+        private IInputSystem _inputSystem;
         private IMove _moveSystem;
         private IRotation _rotationSystem;
+        private IMouse _mouseSystem;
 
-        private void Awake()
+        private void Start()
         {
-            _health = new Health(100, 100);
-            _camera = Camera.main;
+            _mouseSystem = new Mouse();
             _inputSystem = new InputSystem();
-            _moveSystem = new MoveTransform(transform, speed);
-            _rotationSystem = new RotationTransform(transform);
-            _ammunitionPool = new AmmunitionPool(10);
+            _rotationSystem = new PlayerRotation(transform);
+            _ammunitionPool = GameStarter.AmmunitionPool;
+            _health = new Health(hp, hp);
 
-        }
-
-        private void Update()
-        {
-            var direction = Input.mousePosition - _camera.WorldToScreenPoint(transform.position);
-
-            _rotationSystem.Rotation(direction);
-            _moveSystem.Move(_inputSystem.Axis.x, _inputSystem.Axis.y, Time.deltaTime);
-
-            if (_inputSystem.IsAttackButtonUp())
-            {
-                Fire();
-            }
+            _moveSystem = gameObject.AddComponent<PlayerMove>();
+            _camera = Camera.main;
         }
 
         public void Fire()
@@ -53,22 +42,37 @@ namespace Asteroids
             Rockets.transform.position = barrel.position;
             Rockets.transform.rotation = barrel.rotation;
             Rockets.gameObject.SetActive(true);
-            Rockets.onCollision.AddListener(_ammunitionPool.ReturnToPool);
+            Rockets.AddForce();
+        }
+
+        private void Update()
+        {
+            _rotationSystem.Rotation(_mouseSystem.DirectionFromShip(_camera, transform.position));
+
+            if (_inputSystem.IsAttackButtonUp())
+            {
+                Fire();
+            }
+
+            if (_inputSystem.IsForwardButtonUp())
+            {
+                _moveSystem.AddForceForward(overclockingForce);
+            }
+
+            if (_inputSystem.IsAccelerationButtonUp())
+            {
+                _moveSystem.AddAcceleration(accelerationForce);
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (!other.gameObject.CompareTag("PlayerMissile"))
+            var dealer = other.gameObject.GetComponent<IDamageDealer>();
+            _health.ChangeCurrentHealth(dealer.Damage);
+
+            if (_health.CurrentHealth <= 0)
             {
-                if (_health.CurrentHealth <= 0)
-                {
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    Debug.Log("Damage 5");
-                    _health.ChangeCurrentHealth(5);
-                }
+                Destroy(gameObject);
             }
         }
     }

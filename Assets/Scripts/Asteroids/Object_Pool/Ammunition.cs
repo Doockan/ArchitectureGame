@@ -1,13 +1,12 @@
 using UnityEngine;
-using UnityEngine.Events;
 
-namespace Asteroids
+namespace Asteroids.Object_Pool
 {
     public abstract class Ammunition : MonoBehaviour
 
     {
-        public UnityEvent<Transform> onCollision;
-
+        public abstract void AddForce();
+        
         private float Damage { get; set; }
         private float FiringRange { get; set; }
         private float RateOfFire { get; set; }

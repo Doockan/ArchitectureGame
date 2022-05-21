@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 
 namespace Asteroids.Object_Pool
 {
-    public class AmmunitionPool : MonoBehaviour
+    public class AmmunitionPool
     {
         private readonly Dictionary<string, HashSet<Ammunition>> _ammunitionPool;
         private readonly int _capacityPool;

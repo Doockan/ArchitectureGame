@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    public class RotationTransform : IRotation
+    public class PlayerRotation : IRotation
     {
         private Transform _transform;
 
-        public RotationTransform(Transform transform)
+        public PlayerRotation(Transform transform)
         {
             _transform = transform;
         }

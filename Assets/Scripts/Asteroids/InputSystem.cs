@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Asteroids.Interface;
+using UnityEngine;
 
-namespace Asteroids.Interface
+namespace Asteroids
 {
     public class InputSystem : IInputSystem
     {
@@ -12,6 +13,8 @@ namespace Asteroids.Interface
 
         public bool IsAttackButtonUp() => Input.GetButtonUp(Fire1);
 
-        public bool IsAccelerationButtonUp() => Input.GetKeyUp(KeyCode.LeftShift);
+        public bool IsAccelerationButtonUp() => Input.GetKey(KeyCode.LeftShift);
+
+        public bool IsForwardButtonUp() => Input.GetKey(KeyCode.W);
     }
 }

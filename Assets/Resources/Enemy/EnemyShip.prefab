@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5824502989924260321}
   - component: {fileID: 3698859849380336047}
+  - component: {fileID: -8080044599082373022}
   - component: {fileID: -7122485749746615515}
   m_Layer: 0
   m_Name: EnemyShip
@@ -71,6 +72,27 @@ PolygonCollider2D:
       - {x: 0.11676538, y: -0.15392837}
       - {x: 0.18286279, y: -0.019173846}
       - {x: 0.19415402, y: 0.08693094}
+--- !u!50 &-8080044599082373022
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274586212070943862}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 600
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &-7122485749746615515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60fa581b5f244d2ab7c3da03147445d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxRange: 4
+  overclockingForce: 10
+  barrel: {fileID: 620798212888340698}
+  fireDelay: 2
 --- !u!1 &7301178069173083201
 GameObject:
   m_ObjectHideFlags: 0

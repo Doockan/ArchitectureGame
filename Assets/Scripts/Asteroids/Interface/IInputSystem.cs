@@ -7,5 +7,6 @@ namespace Asteroids.Interface
         Vector2 Axis { get;}
         bool IsAttackButtonUp();
         bool IsAccelerationButtonUp();
+        bool IsForwardButtonUp();
     }
 }

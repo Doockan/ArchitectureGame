@@ -4,7 +4,7 @@ namespace Asteroids.Enemys
 {
     internal abstract class Enemy : MonoBehaviour
     {
-        private Health Health { get; set; }
+        public Health Health { get; set; }
 
         public static Asteroid CreateAsteroid(Health hp)
         {

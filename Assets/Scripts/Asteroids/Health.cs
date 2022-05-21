@@ -1,4 +1,5 @@
 using Asteroids.Interface;
+using UnityEngine;
 
 namespace Asteroids
 {
@@ -16,6 +17,7 @@ namespace Asteroids
         public void ChangeCurrentHealth(float hp)
         {
             CurrentHealth -= hp;
+            Debug.Log($"Получил {hp} урона");
         }
     }
 }
