@@ -22,11 +22,9 @@ namespace Asteroids
         private IInputSystem _inputSystem;
         private IMove _moveSystem;
         private IRotation _rotationSystem;
-        private IMouse _mouseSystem;
 
         private void Start()
         {
-            _mouseSystem = new Mouse();
             _inputSystem = new InputSystem();
             _rotationSystem = new PlayerRotation(transform);
             _ammunitionPool = GameStarter.AmmunitionPool;
@@ -47,7 +45,7 @@ namespace Asteroids
 
         private void Update()
         {
-            _rotationSystem.Rotation(_mouseSystem.DirectionFromShip(_camera, transform.position));
+            _rotationSystem.Rotation(_camera.transform.position);
 
             if (_inputSystem.IsAttackButtonUp())
             {
