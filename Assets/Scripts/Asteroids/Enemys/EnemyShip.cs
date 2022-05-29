@@ -25,16 +25,15 @@ namespace Asteroids.Enemys
         {
             _ammunitionPool = GameStarter.AmmunitionPool;
             _moveSystem = gameObject.AddComponent<EnemyMove>();
-            _rotationSystem = gameObject.AddComponent<EnemyRotation>();
             _player = GameObject.Find("Player");
+            _rotationSystem = new EnemyRotation(transform);
 
             Damage = 10f;
         }
 
         private void Update()
         {
-            var direction = _player.transform.position - transform.position;
-            _rotationSystem.Rotation(direction);
+            _rotationSystem.Rotation(_player.transform.position);
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up);
             cooldownTimer -= Time.deltaTime;
