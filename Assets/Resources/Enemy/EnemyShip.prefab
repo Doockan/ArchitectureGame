@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5824502989924260321}
   - component: {fileID: 3698859849380336047}
   - component: {fileID: -8080044599082373022}
-  - component: {fileID: -7122485749746615515}
+  - component: {fileID: 7590595890856669604}
   m_Layer: 0
   m_Name: EnemyShip
   m_TagString: Player
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4274586212070943862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 2, z: 0}
+  m_LocalPosition: {x: 4, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -93,7 +93,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-7122485749746615515
+--- !u!114 &7590595890856669604
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,13 +102,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4274586212070943862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c60fa581b5f244d2ab7c3da03147445d, type: 3}
+  m_Script: {fileID: 11500000, guid: 031ee88607e34cab96ad6cade46d67c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRange: 4
-  overclockingForce: 10
-  barrel: {fileID: 620798212888340698}
-  fireDelay: 2
+  _speed: 1
+  _stopDistance: 0.5
 --- !u!1 &7301178069173083201
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace Asteroids.Object_Pool
 {
+    [Serializable]
     public abstract class Ammunition : MonoBehaviour
 
     {

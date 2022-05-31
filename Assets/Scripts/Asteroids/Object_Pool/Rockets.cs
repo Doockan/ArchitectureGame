@@ -1,12 +1,11 @@
-using Asteroids.Interface;
+using System;
 using UnityEngine;
 
 namespace Asteroids.Object_Pool
 {
-    public class Rockets : Ammunition, IDamageDealer
+    [Serializable]
+    public class Rockets : Ammunition
     {
-        public float Damage { get; set; }
-        
         private Rigidbody2D _rigidbody2D;
         private Transform _rotPool;
 
@@ -14,7 +13,6 @@ namespace Asteroids.Object_Pool
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
-            Damage = 10f;
         }
 
         public override void AddForce()
