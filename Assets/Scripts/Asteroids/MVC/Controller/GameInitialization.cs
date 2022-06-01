@@ -26,7 +26,9 @@ namespace Asteroids.MVC.Controller
             controllers.Add(new InputController(inputInitialization.GetInput()));
 
             controllers.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.GetPlayer(), playerModel));
+            
             controllers.Add(new EnemyMoveController(enemyInitialization.GetMoveEnemies(),playerInitialization.GetPlayer()));
+            controllers.Add(new EnemyRotateController(enemyInitialization.GetRotateEnemies(), playerInitialization.GetPlayer()));
         }
     }
 }

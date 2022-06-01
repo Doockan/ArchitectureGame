@@ -18,7 +18,7 @@ namespace Asteroids.MVC.Player
             return new GameObject(_playerData.Name)
                 .AddSprite(_playerData.Sprite)
                 .AddPolygonCollider2D()
-                .AddRigidbody2D(100f,0f)
+                .AddRigidbody2D(1f,0f)
                 .transform;
         }
     }

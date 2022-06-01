@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1
   _stopDistance: 0.5
+  _rotateSpeed: 1000
 --- !u!1 &7301178069173083201
 GameObject:
   m_ObjectHideFlags: 0

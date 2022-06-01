@@ -3,12 +3,15 @@ using UnityEngine;
 
 namespace Asteroids.MVC.Enemy
 {
-    public class EnemyProvider : MonoBehaviour, IEnemy, IMove
+    public class EnemyProvider : MonoBehaviour, IEnemy
     {
         public event Action<int> OnTriggerEnterChange;
         [SerializeField] private float _speed;
         [SerializeField] private float _stopDistance;
+        [SerializeField] private float _rotateSpeed;
+        
         private Rigidbody2D _rigidbody2D;
+
 
         private void Start()
         {
@@ -17,7 +20,7 @@ namespace Asteroids.MVC.Enemy
 
         public void Move(Vector3 point)
         {
-            if ((transform.localPosition - point).sqrMagnitude >= _stopDistance * _stopDistance )
+            if ((transform.localPosition - point).sqrMagnitude >= _stopDistance * _stopDistance)
             {
                 var dir = (point - transform.localPosition).normalized;
                 _rigidbody2D.velocity = dir * _speed;
@@ -26,7 +29,16 @@ namespace Asteroids.MVC.Enemy
             {
                 _rigidbody2D.velocity = Vector2.zero;
             }
-            
+        }
+
+        public void Rotate(Vector3 point)
+        {
+            var dir = (point - transform.localPosition).normalized;
+
+            float zAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Deg2Rad - 90;
+            Quaternion desiredRot = Quaternion.Euler(0, 0, zAngle);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, _rotateSpeed * Time.deltaTime);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
