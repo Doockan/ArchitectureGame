@@ -1,10 +1,11 @@
+using System.Data;
 using Asteroids.MVC.Interface;
 using Asteroids.MVC.Model;
 using UnityEngine;
 
 namespace Asteroids.MVC.Controller
 {
-    public class MoveController : IExecute, ICleanup
+    public class MoveController : IFixedExecute, ICleanup
     {
         private readonly Transform _unit;
         private readonly IPlayerModel _unitData;
@@ -29,17 +30,9 @@ namespace Asteroids.MVC.Controller
             _verticalInputProxy.AxisOnChange += VerticalOnAxisOnChange;
         }
 
-        
-        /*
-         !!!!!!!!!!!!!!!!!!!!!!!!!!
-        ОСТАНОВИЛСЯ НА ТОМ ЧТО КОРАБЛЬ ОООООЧЕНЬ МЕДЛЕННО РАЗГОНЯЕТСЯ
-        !!!!!!!!!!!!!!!!!!!!!!!!!!!
-        */
-        
-        public void Execute(float deltaTime)
+        public void FixedExecute(float deltaTime)
         {
-            var speed = deltaTime * _unitData.Speed;
-            _rigidBody2D.AddForce(new Vector2(_horizontal, _vertical).normalized * speed);
+            _rigidBody2D.AddForce(new Vector2(_horizontal, _vertical) * _unitData.Speed);
         }
 
         public void Cleanup()
@@ -50,12 +43,12 @@ namespace Asteroids.MVC.Controller
 
         private void VerticalOnAxisOnChange(float value)
         {
-            _horizontal = value;
+            _vertical = value;
         }
 
         private void HorizontalOnAxisOnChange(float value)
         {
-            _vertical = value;
+            _horizontal = value;
         }
     }
 }

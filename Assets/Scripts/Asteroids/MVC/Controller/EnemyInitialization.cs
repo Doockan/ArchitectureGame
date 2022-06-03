@@ -7,15 +7,18 @@ namespace Asteroids.MVC.Controller
     internal class EnemyInitialization : IInitialization
     {
         private readonly EnemyFactory _enemyFactory;
-        private CompositeMove _enemy;
+        private CompositeMove _enemyMove;
+        private CompositeRotate _enemyRotate;
         private List<IEnemy> _enemies;
 
         public EnemyInitialization(EnemyFactory enemyFactory)
         {
             _enemyFactory = enemyFactory;
-            _enemy = new CompositeMove();
+            _enemyMove = new CompositeMove();
+            _enemyRotate = new CompositeRotate();
             var enemy = _enemyFactory.CreateEnemy(EnemyType.SmallEnemyShip);
-            _enemy.AddUnit(enemy);
+            _enemyMove.AddUnit(enemy);
+            _enemyRotate.AddUnit(enemy);
             _enemies = new List<IEnemy>
             {
                 enemy
@@ -28,7 +31,12 @@ namespace Asteroids.MVC.Controller
 
         public IMove GetMoveEnemies()
         {
-            return _enemy;
+            return _enemyMove;
+        }
+
+        public IRotate GetRotateEnemies()
+        {
+            return _enemyRotate;
         }
     }
 }
