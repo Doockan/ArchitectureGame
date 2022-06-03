@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Asteroids.MVC.Enemy
@@ -20,10 +21,10 @@ namespace Asteroids.MVC.Enemy
 
         public void Move(Vector3 point)
         {
-            if ((transform.localPosition - point).sqrMagnitude >= _stopDistance * _stopDistance)
+            if ((transform.position - point).sqrMagnitude >= _stopDistance * _stopDistance)
             {
-                var dir = (point - transform.localPosition).normalized;
-                _rigidbody2D.velocity = dir * _speed;
+                var dir = (point - transform.position).normalized;
+                _rigidbody2D.AddForce(dir * _speed);
             }
             else
             {
@@ -33,9 +34,9 @@ namespace Asteroids.MVC.Enemy
 
         public void Rotate(Vector3 point)
         {
-            var dir = (point - transform.localPosition).normalized;
+            var dir = (point - transform.position).normalized;
 
-            float zAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Deg2Rad - 90;
+            float zAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
             Quaternion desiredRot = Quaternion.Euler(0, 0, zAngle);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, _rotateSpeed * Time.deltaTime);

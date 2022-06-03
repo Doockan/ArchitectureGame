@@ -13,6 +13,6 @@ public class EnemyRotateController : IExecute
     }
     public void Execute(float deltaTime)
     {
-        _rotate.Rotate(_target.localPosition);
+        _rotate.Rotate(_target.position);
     }
 }

@@ -1,10 +1,11 @@
+using System.Data;
 using Asteroids.MVC.Interface;
 using Asteroids.MVC.Model;
 using UnityEngine;
 
 namespace Asteroids.MVC.Controller
 {
-    public class MoveController : IExecute, ICleanup
+    public class MoveController : IFixedExecute, ICleanup
     {
         private readonly Transform _unit;
         private readonly IPlayerModel _unitData;
@@ -28,11 +29,10 @@ namespace Asteroids.MVC.Controller
             _horizontalInputProxy.AxisOnChange += HorizontalOnAxisOnChange;
             _verticalInputProxy.AxisOnChange += VerticalOnAxisOnChange;
         }
-        
-        public void Execute(float deltaTime)
+
+        public void FixedExecute(float deltaTime)
         {
-            var speed = deltaTime * _unitData.Speed;
-            _rigidBody2D.AddForce(new Vector2(_horizontal, _vertical) * speed);
+            _rigidBody2D.AddForce(new Vector2(_horizontal, _vertical) * _unitData.Speed);
         }
 
         public void Cleanup()

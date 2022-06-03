@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Asteroids.MVC.Controller
@@ -18,6 +19,12 @@ namespace Asteroids.MVC.Controller
         {
             var deltaTime = Time.deltaTime;
             _controllers.Execute(deltaTime);
+        }
+
+        private void FixedUpdate()
+        {
+            var deltaTime = Time.fixedTime;
+            _controllers.FixedExecute(deltaTime);
         }
 
         private void OnDestroy()

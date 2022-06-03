@@ -105,9 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 031ee88607e34cab96ad6cade46d67c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
+  _speed: 3
   _stopDistance: 0.5
-  _rotateSpeed: 1000
+  _rotateSpeed: 50
 --- !u!1 &7301178069173083201
 GameObject:
   m_ObjectHideFlags: 0
