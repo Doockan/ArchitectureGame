@@ -11,7 +11,7 @@ namespace Asteroids.MVC.UserInput
     
         public void GetAxis()
         {
-            AxisOnChange.Invoke(Input.GetAxis(AxisManager.VERTICAL));
+            AxisOnChange.Invoke(Input.GetAxis(StringTable.VERTICAL));
         }
     }
 }

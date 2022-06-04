@@ -1,8 +1,9 @@
 namespace Asteroids.MVC.Manager
 {
-    public static class AxisManager
+    public static class StringTable
     {
         public const string HORIZONTAL = "Horizontal";
         public const string VERTICAL = "Vertical";
+        public const string FIRE1 = "Fire1";
     }
 }

@@ -12,7 +12,7 @@ namespace Asteroids.MVC.Controller
             Camera camera = Camera.main;
             var inputInitialization = new InputInitialization();
             
-            var playerModel = new PlayerModel(data.Player.Sprite, data.Player.Speed, data.Player.Position, data.Player.Name);
+            var playerModel = new PlayerModel(data.Player.Sprite, data.Player.Speed, data.Player.RotateSpeed, data.Player.Position, data.Player.Name);
             var playerFactory = new PlayerFactory(playerModel);
             var playerInitialization = new PlayerInitialization(playerFactory, playerModel.Position);
 
@@ -24,8 +24,10 @@ namespace Asteroids.MVC.Controller
             controllers.Add(enemyInitialization);
 
             controllers.Add(new InputController(inputInitialization.GetInput()));
+            controllers.Add(new MousController(inputInitialization.GetMousPosition()));
 
             controllers.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.GetPlayer(), playerModel));
+            controllers.Add(new RotateController(inputInitialization.GetMousPosition(),playerInitialization.GetPlayer(), camera, playerModel));
             
             controllers.Add(new EnemyMoveController(enemyInitialization.GetMoveEnemies(),playerInitialization.GetPlayer()));
             controllers.Add(new EnemyRotateController(enemyInitialization.GetRotateEnemies(), playerInitialization.GetPlayer()));

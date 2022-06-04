@@ -32,7 +32,10 @@ namespace Asteroids.MVC.Controller
 
         public void FixedExecute(float deltaTime)
         {
-            _rigidBody2D.AddForce(new Vector2(_horizontal, _vertical) * _unitData.Speed);
+            if (_vertical > 0f)
+            {
+                _rigidBody2D.AddForce(_unit.transform.up * _unitData.Speed);    
+            }
         }
 
         public void Cleanup()

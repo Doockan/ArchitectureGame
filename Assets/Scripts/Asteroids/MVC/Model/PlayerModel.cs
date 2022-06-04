@@ -6,13 +6,15 @@ namespace Asteroids.MVC.Model
     {
         public Sprite Sprite { get; }
         public float Speed { get; }
+        public float RotateSpeed { get; }
         public Vector2Int Position { get; }
         public string Name { get; }
 
-        public PlayerModel(Sprite sprite, float speed, Vector2Int position, string name)
+        public PlayerModel(Sprite sprite, float speed, float rotateSpeed, Vector2Int position, string name)
         {
             Sprite = sprite;
             Speed = speed;
+            RotateSpeed = rotateSpeed;
             Position = position;
             Name = name;
         }
