@@ -1,8 +1,10 @@
+using System;
 using Asteroids.MVC.Data;
-using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Asteroids.MVC.Enemy
 {
+    [Serializable]
     public class EnemyFactory : IEnemyFactory
     {
         private readonly EnemyData _data;

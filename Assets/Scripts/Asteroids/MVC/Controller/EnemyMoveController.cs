@@ -1,5 +1,6 @@
 using Asteroids.MVC.Enemy;
 using Asteroids.MVC.Interface;
+using Asteroids.MVC.Player;
 using UnityEngine;
 
 namespace Asteroids.MVC.Controller
@@ -9,10 +10,10 @@ namespace Asteroids.MVC.Controller
         private readonly IMove _move;
         private readonly Transform _target;
 
-        public EnemyMoveController(IMove move, Transform target)
+        public EnemyMoveController(IMove move, PlayerProvider target)
         {
             _move = move;
-            _target = target;
+            _target = target.transform;
         }
 
         public void Execute(float deltaTime)

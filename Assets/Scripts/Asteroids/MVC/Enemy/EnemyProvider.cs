@@ -1,9 +1,9 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Asteroids.MVC.Enemy
 {
+    [Serializable]
     public class EnemyProvider : MonoBehaviour, IEnemy
     {
         public event Action<int> OnTriggerEnterChange;

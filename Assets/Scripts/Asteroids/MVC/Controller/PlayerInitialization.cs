@@ -4,23 +4,23 @@ using UnityEngine;
 
 namespace Asteroids.MVC.Controller
 {
-    internal sealed class PlayerInitialization : IInitialization
+    public sealed class PlayerInitialization : IInitialization
     {
         private readonly IPlayerFactory _playerFactory;
-        private Transform _player;
+        private PlayerProvider _player;
 
         public PlayerInitialization(IPlayerFactory playerFactory, Vector2 positionPlayer)
         {
             _playerFactory = playerFactory;
             _player = _playerFactory.CreatePlayer();
-            _player.position = positionPlayer;
+            _player.transform.position = positionPlayer;
         }
         
         public void Initialization()
         {
         }
 
-        public Transform GetPlayer()
+        public PlayerProvider GetPlayer()
         {
             return _player;
         }

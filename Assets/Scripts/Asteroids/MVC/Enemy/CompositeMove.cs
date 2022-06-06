@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Asteroids.MVC.Enemy
 {
+    [Serializable]
     public class CompositeMove : IMove
     {
         private List<IMove> _moves = new List<IMove>();

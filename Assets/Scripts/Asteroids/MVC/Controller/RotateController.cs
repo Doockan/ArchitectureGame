@@ -1,6 +1,7 @@
 using System;
 using Asteroids.MVC.Interface;
 using Asteroids.MVC.Model;
+using Asteroids.MVC.Player;
 using UnityEngine;
 
 namespace Asteroids.MVC.Controller
@@ -15,12 +16,12 @@ namespace Asteroids.MVC.Controller
         private float _horizontal;
         private float _vertical;
 
-        public RotateController((IUserMousPosition positionHorizontal, IUserMousPosition positionVertical) mousPosition, Transform transform, Camera camera, IPlayerModel unitData)
+        public RotateController((IUserMousPosition positionHorizontal, IUserMousPosition positionVertical) mousPosition, PlayerProvider unit, Camera camera, IPlayerModel unitData)
         {
             _horizontalMous = mousPosition.positionHorizontal;
             _verticalMousPosition = mousPosition.positionVertical;
             
-            _transform = transform;
+            _transform = unit.transform;
             _camera = camera;
             _unitData = unitData;
 
@@ -52,16 +53,5 @@ namespace Asteroids.MVC.Controller
             _horizontalMous.PositionOnChange -= HorizontalMousOnPositionOnChange;
             _verticalMousPosition.PositionOnChange -= VerticalOnPositionOnChange;
         }
-    }
-
-    public class Mous
-    {
-        public event Action<bool> FireOnClick;
-    
-        public void GetPosition()
-        {
-        
-        }
-    
     }
 }

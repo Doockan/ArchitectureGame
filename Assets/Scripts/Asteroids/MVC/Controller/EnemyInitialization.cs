@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using Asteroids.MVC.Enemy;
 using Asteroids.MVC.Interface;
 
 namespace Asteroids.MVC.Controller
 {
+    [Serializable]
     internal class EnemyInitialization : IInitialization
     {
         private readonly EnemyFactory _enemyFactory;
