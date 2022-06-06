@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 006f77ed3646408eb63d653249f18947, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 8d5f697c999643441bb417d834c597de, type: 3}
+  PlayerPrefab: {fileID: 6219943678975879040, guid: cc24470d773757d4cb5af4d505a2f655, type: 3}
   _name: Player
-  _speed: 2
+  _speed: 600
+  _rotateSpeed: 60
   _position: {x: 0, y: 0}

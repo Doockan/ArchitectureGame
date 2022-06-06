@@ -1,9 +1,9 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Asteroids.MVC.Enemy
 {
+    [Serializable]
     public class EnemyProvider : MonoBehaviour, IEnemy
     {
         public event Action<int> OnTriggerEnterChange;
@@ -25,10 +25,6 @@ namespace Asteroids.MVC.Enemy
             {
                 var dir = (point - transform.position).normalized;
                 _rigidbody2D.AddForce(dir * _speed);
-            }
-            else
-            {
-                _rigidbody2D.velocity = Vector2.zero;
             }
         }
 

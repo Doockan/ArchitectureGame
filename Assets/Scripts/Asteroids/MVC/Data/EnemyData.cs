@@ -7,6 +7,7 @@ using UnityEngine;
 namespace Asteroids.MVC.Data
 {
     [CreateAssetMenu(fileName = "EnemySettings", menuName = "Data/Unit/EnemySettings")]
+    [Serializable]
     public class EnemyData : ScriptableObject
     {
         [Serializable]

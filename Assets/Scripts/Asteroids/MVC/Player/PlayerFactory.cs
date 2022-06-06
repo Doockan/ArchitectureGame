@@ -13,13 +13,10 @@ namespace Asteroids.MVC.Player
             _playerData = playerData;
         }
     
-        public Transform CreatePlayer()
+        public PlayerProvider CreatePlayer()
         {
-            return new GameObject(_playerData.Name)
-                .AddSprite(_playerData.Sprite)
-                .AddPolygonCollider2D()
-                .AddRigidbody2D(1f,0f)
-                .transform;
+            var playerProvider = _playerData.Prefab;
+            return Object.Instantiate(playerProvider);
         }
     }
 }

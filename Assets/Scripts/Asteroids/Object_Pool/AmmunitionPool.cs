@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -10,12 +11,14 @@ namespace Asteroids.Object_Pool
     public class AmmunitionPool
     {
         private readonly Dictionary<string, HashSet<Ammunition>> _ammunitionPool;
+        private readonly IAmmunitionFactory _ammunitionFactory;
         private readonly int _capacityPool;
         private Transform _rootPool;
 
-        public AmmunitionPool(int capacityPool)
+        public AmmunitionPool(IAmmunitionFactory ammunitionFactory, int capacityPool)
         {
             _ammunitionPool = new Dictionary<string, HashSet<Ammunition>>();
+            _ammunitionFactory = ammunitionFactory;
             _capacityPool = capacityPool;
             if (!_rootPool)
             {
@@ -43,7 +46,7 @@ namespace Asteroids.Object_Pool
             var ammunition = ammunitions.FirstOrDefault(a => !a.gameObject.activeSelf);
             if (ammunition == null)
             {
-                var rockets = Resources.Load<Ammunition>("Ammunition/Rockets");
+                var rockets = _ammunitionFactory.CreateRocket();
                 for (int i = 0; i < _capacityPool; i++)
                 {
                     var instantiate = Object.Instantiate(rockets);

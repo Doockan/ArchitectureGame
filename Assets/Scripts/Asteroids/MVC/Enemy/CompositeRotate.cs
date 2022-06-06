@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using Asteroids.MVC.Interface;
 using UnityEngine;
 
+[Serializable]
 public class CompositeRotate : IRotate
 {
     private List<IRotate> _rotates = new List<IRotate>();

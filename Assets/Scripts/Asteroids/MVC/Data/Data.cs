@@ -1,16 +1,21 @@
+using System;
 using System.IO;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Asteroids.MVC.Data
 {
     [CreateAssetMenu(fileName = "Data", menuName = "Data/Data")]
+    [Serializable]
     public class Data: ScriptableObject
     {
         [SerializeField] private string _enemyDataPath;
         [SerializeField] private string _playerDataPath;
+        [SerializeField] private string _rocketDataPath;
 
         private EnemyData _enemy;
         private PlayerData _player;
+        private RocketData _rocket;
         
         public PlayerData Player
         {
@@ -35,6 +40,19 @@ namespace Asteroids.MVC.Data
                 }
 
                 return _enemy;
+            }
+        }
+
+        public RocketData Rocket
+        {
+            get
+            {
+                if (_rocket == null)
+                {
+                    _rocket = Load<RocketData>(Path.Combine("Data", _rocketDataPath));
+                }
+
+                return _rocket;
             }
         }
 
